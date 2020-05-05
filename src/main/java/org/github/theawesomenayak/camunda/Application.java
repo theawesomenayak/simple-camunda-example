@@ -1,7 +1,8 @@
 package org.github.theawesomenayak.camunda;
 
+import java.util.Set;
 import javax.inject.Inject;
-import org.github.theawesomenayak.camunda.worker.ChargeCardWorker;
+import org.github.theawesomenayak.camunda.worker.ExternalWorker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,12 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-  private final ChargeCardWorker chargeCardWorker;
+  private final Set<ExternalWorker> externalWorkers;
 
   @Inject
-  public Application(final ChargeCardWorker chargeCardWorker) {
+  public Application(final Set<ExternalWorker> externalWorkers) {
 
-    this.chargeCardWorker = chargeCardWorker;
+    this.externalWorkers = externalWorkers;
   }
 
   public static void main(final String[] args) {
@@ -25,6 +26,6 @@ public class Application implements CommandLineRunner {
   @Override
   public void run(final String... args) {
 
-    chargeCardWorker.execute();
+    externalWorkers.forEach(ExternalWorker::execute);
   }
 }

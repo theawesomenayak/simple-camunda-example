@@ -8,13 +8,13 @@ import org.camunda.bpm.client.task.ExternalTaskHandler;
 
 @Slf4j
 @Named
-public final class ChargeCardWorker extends ExternalWorker {
+public final class SendNotificationWorker extends ExternalWorker {
 
-  private static final String TOPIC = "charge-card";
+  private static final String TOPIC = "send-notification";
 
   @Inject
-  public ChargeCardWorker(final ExternalTaskClient externalTaskClient,
-      @Named("charge.card.handler") final ExternalTaskHandler externalTaskHandler) {
+  public SendNotificationWorker(final ExternalTaskClient externalTaskClient,
+      @Named("notification.handler") final ExternalTaskHandler externalTaskHandler) {
 
     super(TOPIC, externalTaskClient, externalTaskHandler);
   }
