@@ -7,23 +7,23 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Main implements CommandLineRunner {
+public class Application implements CommandLineRunner {
 
   private final ChargeCardWorker chargeCardWorker;
 
   @Inject
-  public Main(final ChargeCardWorker chargeCardWorker) {
+  public Application(final ChargeCardWorker chargeCardWorker) {
 
     this.chargeCardWorker = chargeCardWorker;
   }
 
   public static void main(final String[] args) {
 
-    SpringApplication.run(Main.class, args);
+    SpringApplication.run(Application.class, args);
   }
 
   @Override
-  public void run(final String... args) throws Exception {
+  public void run(final String... args) {
 
     chargeCardWorker.execute();
   }

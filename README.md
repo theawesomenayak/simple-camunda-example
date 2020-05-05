@@ -6,3 +6,4 @@ a simple workflow automation project with multiple use cases.
 #### Resources
 1. Camunda - https://camunda.com/
 1. Spring Boot - https://spring.io/projects/spring-boot
+1. Quick Start Tutorial - https://docs.camunda.org/get-started/quick-start

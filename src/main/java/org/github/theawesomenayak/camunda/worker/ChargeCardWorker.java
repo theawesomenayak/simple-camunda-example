@@ -8,23 +8,22 @@ import org.camunda.bpm.client.task.ExternalTaskHandler;
 
 @Slf4j
 @Named
-public class ChargeCardWorker extends ExternalWorker {
+public final class ChargeCardWorker extends ExternalWorker {
 
-  private final ExternalTaskHandler externalTaskHandler;
+  private static final String TOPIC = "charge-card";
 
   @Inject
   public ChargeCardWorker(final ExternalTaskClient externalTaskClient,
       final ExternalTaskHandler externalTaskHandler) {
 
-    super(externalTaskClient);
-    this.externalTaskHandler = externalTaskHandler;
+    super(externalTaskClient, externalTaskHandler);
   }
 
   @Override
   public void execute() {
-    // subscribe to an external task topic as specified in the process
-    client.subscribe("charge-card")
-        .lockDuration(1000) // the default lock duration is 20 seconds, but you can override this
+
+    client.subscribe(TOPIC)
+        .lockDuration(1000)
         .handler(externalTaskHandler)
         .open();
   }
