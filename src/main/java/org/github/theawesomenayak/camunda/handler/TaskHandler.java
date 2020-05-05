@@ -9,19 +9,21 @@ import org.github.theawesomenayak.camunda.common.Status;
 @Slf4j
 abstract class TaskHandler implements ExternalTaskHandler {
 
-  protected static final String LOG_FORMAT = "TaskId={} Status={}";
+  protected static final String LOG_FORMAT = "ProcessInstanceId={} TaskId={} Status={}";
 
   @Override
   public void execute(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
-    log.info(LOG_FORMAT, externalTask.getId(), Status.STARTED);
+    log.info(LOG_FORMAT, externalTask.getProcessInstanceId(), externalTask.getId(), Status.STARTED);
     try {
       handle(externalTask, externalTaskService);
-      log.info(LOG_FORMAT, externalTask.getId(), Status.COMPLETED);
+      log.info(LOG_FORMAT, externalTask.getProcessInstanceId(), externalTask.getId(),
+          Status.COMPLETED);
     } catch (final Exception e) {
       externalTaskService.handleBpmnError(externalTask, e.getMessage());
-      log.error(LOG_FORMAT, externalTask.getId(), Status.ERROR, e);
+      log.error(LOG_FORMAT, externalTask.getProcessInstanceId(), externalTask.getId(), Status.ERROR,
+          e);
     }
   }
 
