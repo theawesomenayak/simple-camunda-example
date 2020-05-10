@@ -1,13 +1,13 @@
-package org.github.theawesomenayak.camunda.rest;
+package org.genesys.simpleclients.camunda.rest;
 
 import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.github.theawesomenayak.camunda.rest.api.CreateDeployment;
-import org.github.theawesomenayak.camunda.rest.api.StartProcess;
-import org.github.theawesomenayak.camunda.rest.request.DeploymentRequest;
-import org.github.theawesomenayak.camunda.rest.request.StartProcessRequest;
-import org.github.theawesomenayak.camunda.rest.request.Variable;
+import org.genesys.simpleclients.camunda.rest.api.CreateDeployment;
+import org.genesys.simpleclients.camunda.rest.api.StartProcess;
+import org.genesys.simpleclients.camunda.rest.request.DeploymentRequest;
+import org.genesys.simpleclients.camunda.rest.request.StartProcessRequest;
+import org.genesys.simpleclients.camunda.rest.request.Variable;
 
 @Named
 public final class RestClient {
@@ -26,18 +26,18 @@ public final class RestClient {
   public void createDeployment(final String name, final String... resources) {
 
     final DeploymentRequest deploymentRequest = DeploymentRequest.builder()
-        .name(name)
-        .files(resources)
-        .build();
+      .name(name)
+      .files(resources)
+      .build();
     createDeployment.invoke(deploymentRequest);
   }
 
   public void startProcess(final String key, final Map<String, Variable> variables) {
 
     final StartProcessRequest startProcessRequest = StartProcessRequest.builder()
-        .key(key)
-        .variables(variables)
-        .build();
+      .key(key)
+      .variables(variables)
+      .build();
     startProcess.invoke(startProcessRequest);
   }
 }

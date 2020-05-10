@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.rest.api;
+package org.genesys.simpleclients.camunda.rest.api;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +13,8 @@ import org.apache.hc.client5.http.entity.mime.StringBody;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.HttpResponse;
-import org.github.theawesomenayak.camunda.exception.ApiException;
-import org.github.theawesomenayak.camunda.rest.request.DeploymentRequest;
+import org.genesys.simpleclients.camunda.exception.ApiException;
+import org.genesys.simpleclients.camunda.rest.request.DeploymentRequest;
 
 @Slf4j
 @Named
@@ -33,13 +33,13 @@ public final class CreateDeployment implements RestApi<DeploymentRequest> {
     final StringBody deployChangedOnly = new StringBody("true", ContentType.TEXT_PLAIN);
 
     final MultipartEntityBuilder builder = MultipartEntityBuilder.create()
-        .addPart("deployment-name", deploymentName)
-        .addPart("enable-duplicate-filtering", enableDuplicateFiltering)
-        .addPart("deploy-changed-only", deployChangedOnly);
+      .addPart("deployment-name", deploymentName)
+      .addPart("enable-duplicate-filtering", enableDuplicateFiltering)
+      .addPart("deploy-changed-only", deployChangedOnly);
 
     for (final String resource : request.getFiles()) {
       final File resourceFile = new File(Objects.requireNonNull(
-          this.getClass().getClassLoader().getResource(resource)).getFile());
+        this.getClass().getClassLoader().getResource(resource)).getFile());
       final FileBody fileBody = new FileBody(resourceFile);
       builder.addPart(resourceFile.getName(), fileBody);
     }

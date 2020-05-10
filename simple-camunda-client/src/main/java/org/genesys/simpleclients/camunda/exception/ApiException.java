@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.exception;
+package org.genesys.simpleclients.camunda.exception;
 
 public final class ApiException extends RuntimeException {
 

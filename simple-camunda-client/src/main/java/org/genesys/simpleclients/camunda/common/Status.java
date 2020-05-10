@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.common;
+package org.genesys.simpleclients.camunda.common;
 
 import lombok.RequiredArgsConstructor;
 

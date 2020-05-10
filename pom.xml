@@ -6,7 +6,12 @@
 
   <groupId>org.github.theawesomenayak</groupId>
   <artifactId>simple-camunda-example</artifactId>
+  <packaging>pom</packaging>
   <version>1.0.0-SNAPSHOT</version>
+
+  <modules>
+    <module>simple-camunda-client</module>
+  </modules>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -84,7 +89,11 @@
       <artifactId>guava</artifactId>
       <version>29.0-jre</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.github.theawesomenayak</groupId>
+      <artifactId>simple-camunda-client</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
 </project>

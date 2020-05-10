@@ -5,6 +5,7 @@ import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.client.ExternalTaskClient;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
+import org.genesys.simpleclients.camunda.worker.ExternalWorker;
 
 @Slf4j
 @Named
@@ -14,8 +15,8 @@ public final class SendNotificationWorker extends ExternalWorker {
 
   @Inject
   public SendNotificationWorker(final ExternalTaskClient externalTaskClient,
-      @Named("notification.handler") final ExternalTaskHandler externalTaskHandler) {
+    @Named("notification.handler") final ExternalTaskHandler externalTaskHandler) {
 
-    super(TOPIC, externalTaskClient, externalTaskHandler);
+    super(TOPIC, externalTaskClient, externalTaskHandler, 10);
   }
 }

@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.rest.api;
+package org.genesys.simpleclients.camunda.rest.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
@@ -10,9 +10,9 @@ import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.core5.http.HttpResponse;
 import org.apache.hc.core5.http.io.entity.StringEntity;
-import org.github.theawesomenayak.camunda.exception.ApiException;
-import org.github.theawesomenayak.camunda.rest.request.StartProcessRequest;
-import org.github.theawesomenayak.camunda.rest.request.Variable;
+import org.genesys.simpleclients.camunda.exception.ApiException;
+import org.genesys.simpleclients.camunda.rest.request.StartProcessRequest;
+import org.genesys.simpleclients.camunda.rest.request.Variable;
 
 @Slf4j
 @Named
@@ -29,7 +29,7 @@ public final class StartProcess implements RestApi<StartProcessRequest> {
     try {
       final ObjectMapper mapper = new ObjectMapper();
       final Map<String, Map<String, Variable>> variables = ImmutableMap
-          .of("variables", request.getVariables());
+        .of("variables", request.getVariables());
       final String json = mapper.writeValueAsString(variables);
       final StringEntity entity = new StringEntity(json);
 

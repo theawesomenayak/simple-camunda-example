@@ -5,6 +5,7 @@ import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.client.ExternalTaskClient;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
+import org.genesys.simpleclients.camunda.worker.ExternalWorker;
 
 @Slf4j
 @Named
@@ -14,8 +15,8 @@ public final class ChargeCardWorker extends ExternalWorker {
 
   @Inject
   public ChargeCardWorker(final ExternalTaskClient externalTaskClient,
-      @Named("charge.card.handler") final ExternalTaskHandler externalTaskHandler) {
+    @Named("charge.card.handler") final ExternalTaskHandler externalTaskHandler) {
 
-    super(TOPIC, externalTaskClient, externalTaskHandler);
+    super(TOPIC, externalTaskClient, externalTaskHandler, 10);
   }
 }

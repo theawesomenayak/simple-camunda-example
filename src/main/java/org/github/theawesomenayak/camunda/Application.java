@@ -2,7 +2,7 @@ package org.github.theawesomenayak.camunda;
 
 import java.util.Set;
 import javax.inject.Inject;
-import org.github.theawesomenayak.camunda.worker.ExternalWorker;
+import org.genesys.simpleclients.camunda.worker.ExternalWorker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

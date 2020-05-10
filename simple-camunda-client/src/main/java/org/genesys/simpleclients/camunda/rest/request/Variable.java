@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.rest.request;
+package org.genesys.simpleclients.camunda.rest.request;
 
 import lombok.Getter;
 
