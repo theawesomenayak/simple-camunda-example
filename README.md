@@ -14,7 +14,9 @@ a simple workflow automation project with multiple use cases.
 1. Confirm that camunda has started by going to http://localhost:8080/camunda-welcome/index.html
 
 #### Payment Retrieval Flow
-1. Open the sample file (resources/payment.bpmn) in camunda modeler and deploy it to camunda.
+1. Deploy the process definition to Camunda using one of the following approaches:
+    1. Open the sample BPMN file (resources/templates/payment.bpmn) and sample DMN file (resources/templates/approve-payment.dmn) in camunda modeler and deploy it to camunda.
+    1. Inject an instance of PaymentRetrieval in Application class. Invoke `paymentRetrieval.deploy() and paymentRetrieval.startProcess()`.
 1. Go to *Tasklist* (http://localhost:8080/camunda/app/tasklist) and log in with the credentials “demo / demo”
 1. Click on the *Start Process* button to start a process instance. 
 1. Select *Payment Retrieval* from the list. 
