@@ -1,26 +1,21 @@
-package org.github.theawesomenayak.camunda.workflows;
+package org.github.theawesomenayak.camunda.demo;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
-import javax.inject.Inject;
 import javax.inject.Named;
+import lombok.AllArgsConstructor;
 import org.github.theawesomenayak.camunda.rest.RestClient;
 import org.github.theawesomenayak.camunda.rest.request.Variable;
 import org.github.theawesomenayak.camunda.workflow.Workflow;
 
 @Named
+@AllArgsConstructor
 public final class PaymentRetrieval implements Workflow {
 
   private final RestClient restClient;
-
-  @Inject
-  public PaymentRetrieval(final RestClient restClient) {
-
-    this.restClient = restClient;
-  }
 
   @Override
   public void deploy() {
