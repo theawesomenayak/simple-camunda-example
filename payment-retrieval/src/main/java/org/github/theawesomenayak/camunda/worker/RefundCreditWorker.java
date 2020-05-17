@@ -6,13 +6,13 @@ import org.camunda.bpm.client.ExternalTaskClient;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
 
 @Named
-public final class SendNotificationWorker extends ExternalWorker {
+public final class RefundCreditWorker extends ExternalWorker {
 
-  private static final String TOPIC = "send-notification";
+  private static final String TOPIC = "refund-credit";
 
   @Inject
-  public SendNotificationWorker(final ExternalTaskClient externalTaskClient,
-    @Named("notification.handler") final ExternalTaskHandler externalTaskHandler) {
+  public RefundCreditWorker(final ExternalTaskClient externalTaskClient,
+    @Named("refund.credit.handler") final ExternalTaskHandler externalTaskHandler) {
 
     super(TOPIC, externalTaskClient, externalTaskHandler);
   }

@@ -7,13 +7,22 @@ import org.camunda.bpm.client.task.ExternalTaskHandler;
 
 public abstract class ExternalWorker {
 
-  final ExternalTaskClient client;
+  private final ExternalTaskClient client;
 
-  final ExternalTaskHandler externalTaskHandler;
+  private final ExternalTaskHandler externalTaskHandler;
 
   private final String topic;
 
   private final ExecutorService executorService;
+
+  protected ExternalWorker(final String topic, final ExternalTaskClient client,
+    final ExternalTaskHandler externalTaskHandler) {
+
+    this.topic = topic;
+    this.client = client;
+    this.externalTaskHandler = externalTaskHandler;
+    this.executorService = Executors.newSingleThreadExecutor();
+  }
 
   protected ExternalWorker(final String topic, final ExternalTaskClient client,
     final ExternalTaskHandler externalTaskHandler, final int numberOfThreads) {
