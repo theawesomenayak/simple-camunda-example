@@ -12,7 +12,7 @@
   <modules>
     <module>camunda-core</module>
     <module>services-core</module>
-    <module>workflow-payment-retrieval</module>
+    <module>flowing-payment</module>
   </modules>
 
   <parent>

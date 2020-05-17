@@ -1,11 +1,11 @@
-package org.github.theawesomenayak.camunda.rest.api;
+package org.github.theawesomenayak.camunda.client.api;
 
 import java.io.IOException;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.github.theawesomenayak.camunda.client.request.ApiRequest;
 import org.github.theawesomenayak.camunda.exception.ApiException;
-import org.github.theawesomenayak.camunda.rest.request.ApiRequest;
 
 public interface RestApi<T extends ApiRequest> {
 

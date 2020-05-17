@@ -7,8 +7,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.inject.Named;
 import lombok.AllArgsConstructor;
-import org.github.theawesomenayak.camunda.rest.CamundaClient;
-import org.github.theawesomenayak.camunda.rest.request.Variable;
+import org.github.theawesomenayak.camunda.client.CamundaClient;
+import org.github.theawesomenayak.camunda.client.request.Variable;
 import org.github.theawesomenayak.camunda.workflow.Workflow;
 
 @Named
@@ -27,7 +27,7 @@ public final class PaymentRetrieval implements Workflow {
   @Override
   public void startProcess(final int numberOfProcesses) {
 
-    final ExecutorService executorService = Executors.newFixedThreadPool(numberOfProcesses);
+    final ExecutorService executorService = Executors.newFixedThreadPool(4);
 
     for (int i = 0; i < numberOfProcesses; i++) {
       executorService.submit(() -> {

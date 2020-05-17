@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.rest.api;
+package org.github.theawesomenayak.camunda.client.api;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,9 +13,9 @@ import org.apache.hc.client5.http.entity.mime.StringBody;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.HttpResponse;
+import org.github.theawesomenayak.camunda.client.request.DeploymentRequest;
 import org.github.theawesomenayak.camunda.common.Constants;
 import org.github.theawesomenayak.camunda.exception.ApiException;
-import org.github.theawesomenayak.camunda.rest.request.DeploymentRequest;
 
 @Slf4j
 @Named

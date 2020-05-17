@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.rest.api;
+package org.github.theawesomenayak.camunda.client.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
@@ -10,10 +10,10 @@ import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.core5.http.HttpResponse;
 import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.github.theawesomenayak.camunda.client.request.StartProcessRequest;
+import org.github.theawesomenayak.camunda.client.request.Variable;
 import org.github.theawesomenayak.camunda.common.Constants;
 import org.github.theawesomenayak.camunda.exception.ApiException;
-import org.github.theawesomenayak.camunda.rest.request.StartProcessRequest;
-import org.github.theawesomenayak.camunda.rest.request.Variable;
 
 @Slf4j
 @Named

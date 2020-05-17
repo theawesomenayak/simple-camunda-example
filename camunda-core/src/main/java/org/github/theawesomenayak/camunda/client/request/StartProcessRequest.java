@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.rest.request;
+package org.github.theawesomenayak.camunda.client.request;
 
 import java.util.Map;
 import lombok.Builder;

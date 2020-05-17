@@ -1,13 +1,13 @@
-package org.github.theawesomenayak.camunda.rest;
+package org.github.theawesomenayak.camunda.client;
 
 import java.util.Map;
 import javax.inject.Named;
 import lombok.AllArgsConstructor;
-import org.github.theawesomenayak.camunda.rest.api.CreateDeployment;
-import org.github.theawesomenayak.camunda.rest.api.StartProcess;
-import org.github.theawesomenayak.camunda.rest.request.DeploymentRequest;
-import org.github.theawesomenayak.camunda.rest.request.StartProcessRequest;
-import org.github.theawesomenayak.camunda.rest.request.Variable;
+import org.github.theawesomenayak.camunda.client.api.CreateDeployment;
+import org.github.theawesomenayak.camunda.client.api.StartProcess;
+import org.github.theawesomenayak.camunda.client.request.DeploymentRequest;
+import org.github.theawesomenayak.camunda.client.request.StartProcessRequest;
+import org.github.theawesomenayak.camunda.client.request.Variable;
 
 @Named
 @AllArgsConstructor
