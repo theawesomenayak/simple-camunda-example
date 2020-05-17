@@ -13,6 +13,7 @@ import org.apache.hc.client5.http.entity.mime.StringBody;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.HttpResponse;
+import org.github.theawesomenayak.camunda.common.Constants;
 import org.github.theawesomenayak.camunda.exception.ApiException;
 import org.github.theawesomenayak.camunda.rest.request.DeploymentRequest;
 
@@ -20,7 +21,7 @@ import org.github.theawesomenayak.camunda.rest.request.DeploymentRequest;
 @Named
 public final class CreateDeployment implements RestApi<DeploymentRequest> {
 
-  private static final String URI = "http://localhost:8080/engine-rest/deployment/create";
+  private static final String URI = Constants.CAMUNDA_BASE_URL + "/deployment/create";
 
   @Override
   public void execute(final DeploymentRequest request, final HttpClient httpClient) {
