@@ -11,7 +11,8 @@
 
   <modules>
     <module>camunda-core</module>
-    <module>payment-retrieval</module>
+    <module>services-core</module>
+    <module>workflow-payment-retrieval</module>
   </modules>
 
   <parent>
