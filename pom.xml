@@ -10,7 +10,8 @@
   <version>1.0.0-SNAPSHOT</version>
 
   <modules>
-    <module>simple-camunda-client</module>
+    <module>camunda-core</module>
+    <module>payment-retrieval</module>
   </modules>
 
   <parent>
@@ -40,9 +41,8 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${spring.boot.version}</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
@@ -89,10 +89,26 @@
       <artifactId>guava</artifactId>
       <version>29.0-jre</version>
     </dependency>
+
     <dependency>
-      <groupId>org.github.theawesomenayak</groupId>
-      <artifactId>simple-camunda-client</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
