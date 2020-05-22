@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @AllArgsConstructor
 @SpringBootApplication(scanBasePackages = "org.github.theawesomenayak")
-public class Application implements CommandLineRunner {
+public class PaymentRetrieval implements CommandLineRunner {
 
   private final Producer producer;
 
@@ -17,7 +17,7 @@ public class Application implements CommandLineRunner {
 
   public static void main(final String[] args) {
 
-    SpringApplication.run(Application.class, args);
+    SpringApplication.run(PaymentRetrieval.class, args);
   }
 
   @Override

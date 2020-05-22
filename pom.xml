@@ -12,7 +12,10 @@
   <modules>
     <module>camunda-core</module>
     <module>services-core</module>
-    <module>flowing-payment</module>
+    <module>flowing-payment-retrieval</module>
+    <module>flowing-invoice-approval</module>
+    <module>flowing-retail</module>
+    <module>flowing-trip-booking</module>
   </modules>
 
   <parent>
