@@ -34,13 +34,13 @@ public final class CreateDeployment implements RestApi<DeploymentRequest> {
     final StringBody deployChangedOnly = new StringBody("true", ContentType.TEXT_PLAIN);
 
     final MultipartEntityBuilder builder = MultipartEntityBuilder.create()
-      .addPart("deployment-name", deploymentName)
-      .addPart("enable-duplicate-filtering", enableDuplicateFiltering)
-      .addPart("deploy-changed-only", deployChangedOnly);
+        .addPart("deployment-name", deploymentName)
+        .addPart("enable-duplicate-filtering", enableDuplicateFiltering)
+        .addPart("deploy-changed-only", deployChangedOnly);
 
     for (final String resource : request.getFiles()) {
       final File resourceFile = new File(Objects.requireNonNull(
-        this.getClass().getClassLoader().getResource(resource)).getFile());
+          this.getClass().getClassLoader().getResource(resource)).getFile());
       final FileBody fileBody = new FileBody(resourceFile);
       builder.addPart(resourceFile.getName(), fileBody);
     }

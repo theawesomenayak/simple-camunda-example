@@ -7,7 +7,7 @@ import org.github.theawesomenayak.camunda.client.api.CreateDeployment;
 import org.github.theawesomenayak.camunda.client.api.StartProcess;
 import org.github.theawesomenayak.camunda.client.request.DeploymentRequest;
 import org.github.theawesomenayak.camunda.client.request.StartProcessRequest;
-import org.github.theawesomenayak.camunda.client.request.Variable;
+import org.github.theawesomenayak.camunda.client.variable.Variable;
 
 @Named
 @AllArgsConstructor
@@ -20,18 +20,18 @@ public final class CamundaClient {
   public void createDeployment(final String name, final String... resources) {
 
     final DeploymentRequest deploymentRequest = DeploymentRequest.builder()
-      .name(name)
-      .files(resources)
-      .build();
+        .name(name)
+        .files(resources)
+        .build();
     createDeployment.invoke(deploymentRequest);
   }
 
   public void startProcess(final String key, final Map<String, Variable> variables) {
 
     final StartProcessRequest startProcessRequest = StartProcessRequest.builder()
-      .key(key)
-      .variables(variables)
-      .build();
+        .key(key)
+        .variables(variables)
+        .build();
     startProcess.invoke(startProcessRequest);
   }
 }

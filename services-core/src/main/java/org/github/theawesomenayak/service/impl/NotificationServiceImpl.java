@@ -12,9 +12,9 @@ public final class NotificationServiceImpl implements NotificationService {
 
   @Override
   public void sendNotification(final NotificationChannel notificationChannel,
-    final NotificationParams notificationParams) {
+      final NotificationParams notificationParams) {
 
     log.info("Sending {} to {} with Message {}", notificationChannel.name(),
-      notificationParams.getReceiver(), notificationParams.getMessage());
+        notificationParams.getReceiver(), notificationParams.getMessage());
   }
 }

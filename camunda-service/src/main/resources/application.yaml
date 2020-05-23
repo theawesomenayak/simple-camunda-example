@@ -1,0 +1,12 @@
+camunda.bpm:
+  admin-user:
+    id: demo
+    password: demo
+    firstName: Siben
+    lastName: Nayak
+  filter:
+    create: All tasks
+
+spring:
+  jersey:
+    application-path: engine-rest

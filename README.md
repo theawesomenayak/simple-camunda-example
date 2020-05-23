@@ -10,8 +10,13 @@ a simple workflow automation project with multiple use cases.
 1. Quick Start Tutorial - https://docs.camunda.org/get-started/quick-start
 
 ## Usage
+### Docker
 1. Run `docker-compose up -d` to start the camunda instance.
 1. Confirm that camunda has started by going to http://localhost:8080/camunda-welcome/index.html
+
+### Spring Boot
+1. Run `CamundaService` application in the `camunda-service` module.
+1. Confirm that camunda has started by going to http://localhost:8080/
 
 ### Payment Retrieval Flow
 #### Manual

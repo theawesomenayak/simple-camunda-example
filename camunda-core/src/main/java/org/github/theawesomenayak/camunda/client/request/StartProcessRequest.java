@@ -4,6 +4,7 @@ import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
+import org.github.theawesomenayak.camunda.client.variable.Variable;
 
 @Getter
 @Builder

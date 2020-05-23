@@ -11,7 +11,7 @@ import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.core5.http.HttpResponse;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.github.theawesomenayak.camunda.client.request.StartProcessRequest;
-import org.github.theawesomenayak.camunda.client.request.Variable;
+import org.github.theawesomenayak.camunda.client.variable.Variable;
 import org.github.theawesomenayak.camunda.common.Constants;
 import org.github.theawesomenayak.camunda.exception.ApiException;
 
@@ -30,7 +30,7 @@ public final class StartProcess implements RestApi<StartProcessRequest> {
     try {
       final ObjectMapper mapper = new ObjectMapper();
       final Map<String, Map<String, Variable>> variables = ImmutableMap
-        .of("variables", request.getVariables());
+          .of("variables", request.getVariables());
       final String json = mapper.writeValueAsString(variables);
       final StringEntity entity = new StringEntity(json);
 

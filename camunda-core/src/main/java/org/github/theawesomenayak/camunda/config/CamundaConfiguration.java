@@ -13,8 +13,8 @@ public class CamundaConfiguration {
   ExternalTaskClient externalTaskClient() {
 
     return ExternalTaskClient.create()
-      .baseUrl(CAMUNDA_BASE_URL)
-      .asyncResponseTimeout(10000) // long polling timeout
-      .build();
+        .baseUrl(CAMUNDA_BASE_URL)
+        .asyncResponseTimeout(10000) // long polling timeout
+        .build();
   }
 }

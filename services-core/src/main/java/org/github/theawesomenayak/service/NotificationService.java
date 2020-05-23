@@ -6,5 +6,5 @@ import org.github.theawesomenayak.model.NotificationParams;
 public interface NotificationService {
 
   void sendNotification(NotificationChannel notificationChannel,
-    NotificationParams notificationParams);
+      NotificationParams notificationParams);
 }
