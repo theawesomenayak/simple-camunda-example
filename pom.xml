@@ -10,6 +10,7 @@
 
   <modules>
     <module>camunda-core</module>
+    <module>camunda-external-client</module>
     <module>services-core</module>
     <module>flowing-payment</module>
     <module>flowing-invoice-approval</module>
@@ -62,11 +63,6 @@
       <version>5.2.6.RELEASE</version>
     </dependency>
     <dependency>
-      <artifactId>camunda-external-task-client</artifactId>
-      <groupId>org.camunda.bpm</groupId>
-      <version>1.3.0</version>
-    </dependency>
-    <dependency>
       <artifactId>lombok</artifactId>
       <groupId>org.projectlombok</groupId>
       <scope>provided</scope>
@@ -92,7 +88,6 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.10</version>
     </dependency>
-
   </dependencies>
 
   <build>

@@ -4,10 +4,10 @@ import com.google.common.collect.ImmutableMap;
 import javax.inject.Named;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
-import org.github.theawesomenayak.camunda.api.TaskHandler;
+import org.github.theawesomenayak.camunda.ExternalHandler;
 
 @Named
-public final class ApprovePaymentHandler extends TaskHandler {
+public final class ApprovePaymentHandler extends ExternalHandler {
 
   @Override
   protected void handle(final ExternalTask externalTask,

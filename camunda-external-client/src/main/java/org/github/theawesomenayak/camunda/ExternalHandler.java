@@ -1,13 +1,12 @@
-package org.github.theawesomenayak.camunda.api;
+package org.github.theawesomenayak.camunda;
 
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.camunda.bpm.client.task.ExternalTaskService;
-import org.github.theawesomenayak.camunda.common.Status;
 
 @Slf4j
-public abstract class TaskHandler implements ExternalTaskHandler {
+public abstract class ExternalHandler implements ExternalTaskHandler {
 
   private static final String LOG_FORMAT = "ProcessInstanceId={} TaskId={} Status={}";
 

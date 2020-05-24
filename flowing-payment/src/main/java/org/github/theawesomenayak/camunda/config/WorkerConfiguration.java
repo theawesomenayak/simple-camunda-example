@@ -2,7 +2,7 @@ package org.github.theawesomenayak.camunda.config;
 
 import lombok.AllArgsConstructor;
 import org.camunda.bpm.client.ExternalTaskClient;
-import org.github.theawesomenayak.camunda.api.ExternalWorker;
+import org.github.theawesomenayak.camunda.ExternalWorker;
 import org.github.theawesomenayak.camunda.handler.ApprovePaymentHandler;
 import org.github.theawesomenayak.camunda.handler.ChargeCardHandler;
 import org.github.theawesomenayak.camunda.handler.CheckWalletHandler;

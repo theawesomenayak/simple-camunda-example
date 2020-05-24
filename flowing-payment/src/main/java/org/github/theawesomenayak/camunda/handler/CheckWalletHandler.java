@@ -6,14 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
-import org.github.theawesomenayak.camunda.api.TaskHandler;
+import org.github.theawesomenayak.camunda.ExternalHandler;
 import org.github.theawesomenayak.model.PaymentInstrument;
 import org.github.theawesomenayak.service.PaymentService;
 
 @Slf4j
 @AllArgsConstructor
 @Named
-public final class CheckWalletHandler extends TaskHandler {
+public final class CheckWalletHandler extends ExternalHandler {
 
   private final PaymentService paymentService;
 

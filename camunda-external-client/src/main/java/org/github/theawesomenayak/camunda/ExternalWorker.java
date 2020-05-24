@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.api;
+package org.github.theawesomenayak.camunda;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

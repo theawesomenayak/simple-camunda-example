@@ -3,7 +3,7 @@ package org.github.theawesomenayak.camunda.demo;
 import java.util.Set;
 import javax.inject.Named;
 import lombok.AllArgsConstructor;
-import org.github.theawesomenayak.camunda.api.ExternalWorker;
+import org.github.theawesomenayak.camunda.ExternalWorker;
 
 @Named
 @AllArgsConstructor

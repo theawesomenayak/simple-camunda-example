@@ -1,6 +1,4 @@
-package org.github.theawesomenayak.camunda.config;
-
-import static org.github.theawesomenayak.camunda.common.Constants.CAMUNDA_BASE_URL;
+package org.github.theawesomenayak.camunda;
 
 import org.camunda.bpm.client.ExternalTaskClient;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class CamundaConfiguration {
+
+  public static final String CAMUNDA_BASE_URL = "http://localhost:8080/engine-rest";
 
   @Bean
   ExternalTaskClient externalTaskClient() {
