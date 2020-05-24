@@ -2,12 +2,10 @@ package org.github.theawesomenayak.camunda.handler;
 
 import com.google.common.collect.ImmutableMap;
 import javax.inject.Named;
-import lombok.AllArgsConstructor;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
 import org.github.theawesomenayak.camunda.api.TaskHandler;
 
-@AllArgsConstructor
 @Named("approve.payment.handler")
 public final class ApprovePaymentHandler extends TaskHandler {
 

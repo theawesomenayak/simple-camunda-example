@@ -15,6 +15,11 @@ public final class VariableMap {
     return put(name, new Variable(value, "Long"));
   }
 
+  public VariableMap putValue(final String name, final double value) {
+
+    return put(name, new Variable(value, "Double"));
+  }
+
   public VariableMap putValue(final String name, final String value) {
 
     return put(name, new Variable(value, "String"));

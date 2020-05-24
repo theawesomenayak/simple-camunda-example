@@ -17,6 +17,6 @@ public final class ServiceUtils {
   @SneakyThrows
   public static void delay() {
 
-    Thread.sleep(ThreadLocalRandom.current().nextLong(500, 1500));
+    Thread.sleep(ThreadLocalRandom.current().nextLong(300, 800));
   }
 }

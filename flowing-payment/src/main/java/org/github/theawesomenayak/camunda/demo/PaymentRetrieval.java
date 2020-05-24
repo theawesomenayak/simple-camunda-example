@@ -1,6 +1,7 @@
 package org.github.theawesomenayak.camunda.demo;
 
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
@@ -25,7 +26,7 @@ public final class PaymentRetrieval implements Workflow {
   public void deploy() {
 
     camundaClient.createDeployment("Payment Retrieval",
-        "templates/payment.bpmn", "templates/approve-payment.dmn");
+        "templates/payment.bpmn", "templates/make-payment.bpmn", "templates/approve-payment.dmn");
   }
 
   @Override
@@ -48,7 +49,7 @@ public final class PaymentRetrieval implements Workflow {
     final String[] items = {"Phone", "Laptop", "Charger"};
     final String item = items[ThreadLocalRandom.current().nextInt(0, items.length)];
     return Variables.createVariables()
-        .putValue("userId", ThreadLocalRandom.current().nextLong(0, 1500))
+        .putValue("userId", UUID.randomUUID().toString())
         .putValue("amount", amount)
         .putValue("item", item)
         .putValue("receiver", "user@gmail.com")

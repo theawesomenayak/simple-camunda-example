@@ -4,9 +4,9 @@ import org.github.theawesomenayak.model.PaymentInstrument;
 
 public interface PaymentService {
 
-  double checkBalance(String customerId, PaymentInstrument paymentInstrument);
+  long checkBalance(String customerId, PaymentInstrument paymentInstrument);
 
-  void charge(PaymentInstrument paymentInstrument, Long amount);
+  void charge(PaymentInstrument paymentInstrument, long amount);
 
-  void refund(PaymentInstrument paymentInstrument, Long amount);
+  void refund(PaymentInstrument paymentInstrument, long amount);
 }

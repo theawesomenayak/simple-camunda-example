@@ -12,22 +12,22 @@ import org.github.theawesomenayak.service.PaymentService;
 public final class PaymentServiceImpl implements PaymentService {
 
   @Override
-  public double checkBalance(final String customerId, final PaymentInstrument paymentInstrument) {
+  public long checkBalance(final String customerId, final PaymentInstrument paymentInstrument) {
 
     log.info("Checking {} balance for customer {}...", paymentInstrument.name(), customerId);
     ServiceUtils.delay();
-    return ThreadLocalRandom.current().nextDouble();
+    return ThreadLocalRandom.current().nextLong(800, 1500);
   }
 
   @Override
-  public void charge(final PaymentInstrument paymentInstrument, final Long amount) {
+  public void charge(final PaymentInstrument paymentInstrument, final long amount) {
 
     log.info("Charging {} with an amount of €{}...", paymentInstrument.name(), amount);
     ServiceUtils.delay();
   }
 
   @Override
-  public void refund(final PaymentInstrument paymentInstrument, final Long amount) {
+  public void refund(final PaymentInstrument paymentInstrument, final long amount) {
 
     log.info("Refunding an amount of €{} to {}...", amount, paymentInstrument.name());
     ServiceUtils.delay();

@@ -1,5 +1,6 @@
 package org.github.theawesomenayak.camunda.handler;
 
+import com.google.common.collect.ImmutableMap;
 import javax.inject.Named;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +21,11 @@ public final class CheckWalletHandler extends TaskHandler {
   protected void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
-    final String customerId = externalTask.getVariable("customerId");
-    paymentService.checkBalance(customerId, PaymentInstrument.WALLET);
-    externalTaskService.complete(externalTask);
+    final long amount = externalTask.getVariable("amount");
+    final String userId = externalTask.getVariable("userId");
+    final long balance = paymentService.checkBalance(userId, PaymentInstrument.WALLET);
+    log.info("UserId={} Balance={}", userId, balance);
+    final boolean hasBalance = Double.compare(amount, balance) < 0;
+    externalTaskService.complete(externalTask, ImmutableMap.of("hasBalance", hasBalance));
   }
 }
