@@ -9,7 +9,7 @@ import org.github.theawesomenayak.model.PaymentInstrument;
 import org.github.theawesomenayak.service.PaymentService;
 
 @AllArgsConstructor
-@Named("deduct.wallet.handler")
+@Named
 public final class DeductWalletHandler extends TaskHandler {
 
   private final PaymentService paymentService;

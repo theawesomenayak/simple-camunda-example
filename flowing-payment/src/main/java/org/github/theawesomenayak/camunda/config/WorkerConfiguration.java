@@ -1,10 +1,14 @@
 package org.github.theawesomenayak.camunda.config;
 
-import javax.inject.Named;
 import lombok.AllArgsConstructor;
 import org.camunda.bpm.client.ExternalTaskClient;
-import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.github.theawesomenayak.camunda.api.ExternalWorker;
+import org.github.theawesomenayak.camunda.handler.ApprovePaymentHandler;
+import org.github.theawesomenayak.camunda.handler.ChargeCardHandler;
+import org.github.theawesomenayak.camunda.handler.CheckWalletHandler;
+import org.github.theawesomenayak.camunda.handler.DeductWalletHandler;
+import org.github.theawesomenayak.camunda.handler.RefundWalletHandler;
+import org.github.theawesomenayak.camunda.handler.SendNotificationHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,48 +21,42 @@ public class WorkerConfiguration {
   private final ExternalTaskClient externalTaskClient;
 
   @Bean
-  ExternalWorker approvePaymentWorker(
-      @Named("approve.payment.handler") final ExternalTaskHandler externalTaskHandler) {
+  ExternalWorker approvePaymentWorker(final ApprovePaymentHandler externalTaskHandler) {
 
     return new ExternalWorker("approve-payment", externalTaskClient, externalTaskHandler,
         NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker chargeCardWorker(
-      @Named("charge.card.handler") final ExternalTaskHandler externalTaskHandler) {
+  ExternalWorker chargeCardWorker(final ChargeCardHandler externalTaskHandler) {
 
     return new ExternalWorker("charge-card", externalTaskClient, externalTaskHandler,
         NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker checkWalletWorker(
-      @Named("check.wallet.handler") final ExternalTaskHandler externalTaskHandler) {
+  ExternalWorker checkWalletWorker(final CheckWalletHandler externalTaskHandler) {
 
     return new ExternalWorker("check-wallet", externalTaskClient, externalTaskHandler,
         NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker deductWalletWorker(
-      @Named("deduct.wallet.handler") final ExternalTaskHandler externalTaskHandler) {
+  ExternalWorker deductWalletWorker(final DeductWalletHandler externalTaskHandler) {
 
     return new ExternalWorker("deduct-wallet", externalTaskClient, externalTaskHandler,
         NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker refundWalletWorker(
-      @Named("refund.wallet.handler") final ExternalTaskHandler externalTaskHandler) {
+  ExternalWorker refundWalletWorker(final RefundWalletHandler externalTaskHandler) {
 
     return new ExternalWorker("refund-wallet", externalTaskClient, externalTaskHandler,
         NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker sendNotificationWorker(
-      @Named("send.notification.handler") final ExternalTaskHandler externalTaskHandler) {
+  ExternalWorker sendNotificationWorker(final SendNotificationHandler externalTaskHandler) {
 
     return new ExternalWorker("send-notification", externalTaskClient, externalTaskHandler,
         NUMBER_OF_THREADS);

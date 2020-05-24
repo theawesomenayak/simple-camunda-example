@@ -9,7 +9,7 @@ import org.github.theawesomenayak.model.PaymentInstrument;
 import org.github.theawesomenayak.service.PaymentService;
 
 @AllArgsConstructor
-@Named("charge.card.handler")
+@Named
 public final class ChargeCardHandler extends TaskHandler {
 
   private final PaymentService paymentService;

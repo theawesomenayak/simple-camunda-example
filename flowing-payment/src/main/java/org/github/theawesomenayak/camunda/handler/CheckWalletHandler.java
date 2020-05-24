@@ -12,7 +12,7 @@ import org.github.theawesomenayak.service.PaymentService;
 
 @Slf4j
 @AllArgsConstructor
-@Named("check.wallet.handler")
+@Named
 public final class CheckWalletHandler extends TaskHandler {
 
   private final PaymentService paymentService;

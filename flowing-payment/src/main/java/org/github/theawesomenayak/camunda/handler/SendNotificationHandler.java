@@ -11,7 +11,7 @@ import org.github.theawesomenayak.model.NotificationParams;
 import org.github.theawesomenayak.service.NotificationService;
 
 @AllArgsConstructor
-@Named("send.notification.handler")
+@Named
 public final class SendNotificationHandler extends TaskHandler {
 
   private final NotificationService notificationService;

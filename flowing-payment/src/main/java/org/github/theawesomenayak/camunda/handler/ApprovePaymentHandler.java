@@ -6,7 +6,7 @@ import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
 import org.github.theawesomenayak.camunda.api.TaskHandler;
 
-@Named("approve.payment.handler")
+@Named
 public final class ApprovePaymentHandler extends TaskHandler {
 
   @Override
