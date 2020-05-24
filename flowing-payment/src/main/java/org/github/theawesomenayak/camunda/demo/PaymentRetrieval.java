@@ -6,11 +6,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.inject.Named;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.github.theawesomenayak.camunda.client.CamundaClient;
 import org.github.theawesomenayak.camunda.client.variable.Variable;
 import org.github.theawesomenayak.camunda.client.variable.Variables;
 import org.github.theawesomenayak.camunda.workflow.Workflow;
 
+@Slf4j
 @Named
 @AllArgsConstructor
 public final class PaymentRetrieval implements Workflow {
@@ -29,11 +31,12 @@ public final class PaymentRetrieval implements Workflow {
   @Override
   public void startProcess(final int numberOfProcesses) {
 
-    final ExecutorService executorService = Executors.newFixedThreadPool(4);
+    final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     for (int i = 0; i < numberOfProcesses; i++) {
-      executorService.submit(() -> {
+      executorService.execute(() -> {
         final Map<String, Variable> variables = getProcessVariables();
+        log.info("Starting process with {}", variables);
         camundaClient.startProcess("payment-retrieval", variables);
       });
     }

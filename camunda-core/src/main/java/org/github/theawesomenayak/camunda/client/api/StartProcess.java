@@ -25,7 +25,7 @@ public final class StartProcess implements RestApi<StartProcessRequest> {
   public void execute(final StartProcessRequest request, final HttpClient httpClient) {
 
     final String resolvedUri = String.format(URI, request.getKey());
-    log.info("Invoking API = {} with URI = {}", this.getClass().getName(), resolvedUri);
+    log.info("Invoking API = {} with URI = {}", this.getClass().getSimpleName(), resolvedUri);
     final HttpPost httpPost = new HttpPost(resolvedUri);
     try {
       final ObjectMapper mapper = new ObjectMapper();
@@ -38,7 +38,7 @@ public final class StartProcess implements RestApi<StartProcessRequest> {
       httpPost.setHeader("Content-type", "application/json");
 
       final HttpResponse response = httpClient.execute(httpPost);
-      log.info("Finished API = {} with Response = {}", this.getClass().getName(), response);
+      log.info("Finished API = {} with Response = {}", this.getClass().getSimpleName(), response);
     } catch (final IOException e) {
       throw new ApiException(e);
     }

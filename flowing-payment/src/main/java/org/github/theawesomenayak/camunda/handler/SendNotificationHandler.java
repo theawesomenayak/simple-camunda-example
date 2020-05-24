@@ -2,6 +2,7 @@ package org.github.theawesomenayak.camunda.handler;
 
 import javax.inject.Named;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.BooleanUtils;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
 import org.github.theawesomenayak.camunda.api.TaskHandler;
@@ -19,7 +20,8 @@ public final class SendNotificationHandler extends TaskHandler {
   protected void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
-    final boolean approved = Boolean.parseBoolean(externalTask.getVariable("approved"));
+    final boolean approved = BooleanUtils
+        .toBooleanDefaultIfNull(externalTask.getVariable("approved"), true);
     notificationService.sendNotification(NotificationChannel.EMAIL,
         NotificationParams.builder()
             .receiver(externalTask.getVariable("receiver"))

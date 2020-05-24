@@ -26,7 +26,7 @@ public final class CreateDeployment implements RestApi<DeploymentRequest> {
   @Override
   public void execute(final DeploymentRequest request, final HttpClient httpClient) {
 
-    log.info("Invoking API = {} with URI = {}", this.getClass().getName(), URI);
+    log.info("Invoking API = {} with URI = {}", this.getClass().getSimpleName(), URI);
     final HttpPost httpPost = new HttpPost(URI);
 
     final StringBody deploymentName = new StringBody(request.getName(), ContentType.TEXT_PLAIN);
@@ -50,7 +50,7 @@ public final class CreateDeployment implements RestApi<DeploymentRequest> {
 
     try {
       final HttpResponse response = httpClient.execute(httpPost);
-      log.info("Finished API = {} with Response = {}", this.getClass().getName(), response);
+      log.info("Finished API = {} with Response = {}", this.getClass().getSimpleName(), response);
     } catch (final IOException e) {
       throw new ApiException(e);
     }

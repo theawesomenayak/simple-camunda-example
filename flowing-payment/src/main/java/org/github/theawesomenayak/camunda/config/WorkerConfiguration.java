@@ -17,6 +17,14 @@ public class WorkerConfiguration {
   private final ExternalTaskClient externalTaskClient;
 
   @Bean
+  ExternalWorker approvePaymentWorker(
+      @Named("approve.payment.handler") final ExternalTaskHandler externalTaskHandler) {
+
+    return new ExternalWorker("approve-payment", externalTaskClient, externalTaskHandler,
+        NUMBER_OF_THREADS);
+  }
+
+  @Bean
   ExternalWorker chargeCardWorker(
       @Named("charge.card.handler") final ExternalTaskHandler externalTaskHandler) {
 
