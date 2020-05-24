@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0uwf72w" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.3">
-  <bpmn:process id="payment-retrieval" name="Payment Retrieval" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_1" name="Payment Retrieval Request">
+  <bpmn:process id="handle-payment" name="Handle Payment" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Payment Request">
       <bpmn:outgoing>Flow_0saai1t</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0saai1t" sourceRef="StartEvent_1" targetRef="Gateway_0q1u7ys" />
@@ -60,7 +60,7 @@
     </bpmn:callActivity>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="payment-retrieval">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="handle-payment">
       <bpmndi:BPMNEdge id="Flow_1ls3zqp_di" bpmnElement="Flow_1ls3zqp">
         <di:waypoint x="800" y="270" />
         <di:waypoint x="862" y="270" />
@@ -113,7 +113,7 @@
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="182" y="99" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="156" y="142" width="88" height="27" />
+          <dc:Bounds x="156" y="142" width="88" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0q1u7ys_di" bpmnElement="Gateway_0q1u7ys" isMarkerVisible="true">

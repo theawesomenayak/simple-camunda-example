@@ -26,7 +26,9 @@ public final class PaymentRetrieval implements Workflow {
   public void deploy() {
 
     camundaClient.createDeployment("Payment Retrieval",
-        "templates/payment.bpmn", "templates/make-payment.bpmn", "templates/approve-payment.dmn");
+        "templates/handle-payment.bpmn",
+        "templates/make-payment.bpmn",
+        "templates/approve-payment.dmn");
   }
 
   @Override
@@ -38,7 +40,7 @@ public final class PaymentRetrieval implements Workflow {
       executorService.execute(() -> {
         final Map<String, Variable> variables = getProcessVariables();
         log.info("Starting process with {}", variables);
-        camundaClient.startProcess("payment-retrieval", variables);
+        camundaClient.startProcess("handle-payment", variables);
       });
     }
   }
