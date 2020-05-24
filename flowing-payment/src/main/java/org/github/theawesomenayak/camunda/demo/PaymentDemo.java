@@ -5,14 +5,16 @@ import lombok.AllArgsConstructor;
 
 @Named
 @AllArgsConstructor
-public final class Producer implements Runnable {
+public final class PaymentDemo implements Runnable {
 
-  private final PaymentRetrieval paymentRetrieval;
+  private final Producer producer;
+
+  private final Consumer consumer;
 
   @Override
   public void run() {
 
-    paymentRetrieval.deploy();
-    paymentRetrieval.startProcess(10);
+    consumer.run();
+    producer.run();
   }
 }
