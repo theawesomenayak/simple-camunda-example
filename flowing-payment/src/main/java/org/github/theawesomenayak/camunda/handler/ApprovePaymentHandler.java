@@ -1,5 +1,8 @@
 package org.github.theawesomenayak.camunda.handler;
 
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.APPROVED;
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.ITEM;
+
 import com.google.common.collect.ImmutableMap;
 import javax.inject.Named;
 import org.camunda.bpm.client.task.ExternalTask;
@@ -13,8 +16,8 @@ public final class ApprovePaymentHandler extends ExternalHandler {
   protected void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
-    final String item = externalTask.getVariable("item");
+    final String item = externalTask.getVariable(ITEM.name());
     final boolean approved = !"Phone".equals(item);
-    externalTaskService.complete(externalTask, ImmutableMap.of("approved", approved));
+    externalTaskService.complete(externalTask, ImmutableMap.of(APPROVED.name(), approved));
   }
 }

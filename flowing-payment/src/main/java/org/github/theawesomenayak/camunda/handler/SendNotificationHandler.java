@@ -1,5 +1,10 @@
 package org.github.theawesomenayak.camunda.handler;
 
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.APPROVED;
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.APPROVED_MESSAGE;
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.RECEIVER;
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.REJECTED_MESSAGE;
+
 import javax.inject.Named;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.BooleanUtils;
@@ -21,13 +26,13 @@ public final class SendNotificationHandler extends ExternalHandler {
       final ExternalTaskService externalTaskService) {
 
     final boolean approved = BooleanUtils
-        .toBooleanDefaultIfNull(externalTask.getVariable("approved"), true);
+        .toBooleanDefaultIfNull(externalTask.getVariable(APPROVED.name()), true);
     notificationService.sendNotification(NotificationChannel.EMAIL,
         NotificationParams.builder()
-            .receiver(externalTask.getVariable("receiver"))
+            .receiver(externalTask.getVariable(RECEIVER.name()))
             .message(approved
-                ? externalTask.getVariable("approvedMessage")
-                : externalTask.getVariable("rejectedMessage"))
+                ? externalTask.getVariable(APPROVED_MESSAGE.name())
+                : externalTask.getVariable(REJECTED_MESSAGE.name()))
             .build());
     externalTaskService.complete(externalTask);
   }

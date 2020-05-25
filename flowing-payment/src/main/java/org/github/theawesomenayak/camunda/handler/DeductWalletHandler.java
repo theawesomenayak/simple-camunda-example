@@ -1,5 +1,7 @@
 package org.github.theawesomenayak.camunda.handler;
 
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.AMOUNT;
+
 import javax.inject.Named;
 import lombok.AllArgsConstructor;
 import org.camunda.bpm.client.task.ExternalTask;
@@ -18,7 +20,7 @@ public final class DeductWalletHandler extends ExternalHandler {
   protected void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
-    final long amount = externalTask.getVariable("amount");
+    final long amount = externalTask.getVariable(AMOUNT.name());
     paymentService.charge(PaymentInstrument.WALLET, amount);
     externalTaskService.complete(externalTask);
   }

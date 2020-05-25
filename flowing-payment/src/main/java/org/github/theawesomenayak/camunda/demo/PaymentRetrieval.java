@@ -1,5 +1,12 @@
 package org.github.theawesomenayak.camunda.demo;
 
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.AMOUNT;
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.APPROVED_MESSAGE;
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.CUSTOMER_ID;
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.ITEM;
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.RECEIVER;
+import static org.github.theawesomenayak.camunda.config.ProcessVariables.REJECTED_MESSAGE;
+
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
@@ -51,12 +58,12 @@ public final class PaymentRetrieval implements Workflow {
     final String[] items = {"Phone", "Laptop", "Charger"};
     final String item = items[ThreadLocalRandom.current().nextInt(0, items.length)];
     return Variables.createVariables()
-        .putValue("userId", UUID.randomUUID().toString())
-        .putValue("amount", amount)
-        .putValue("item", item)
-        .putValue("receiver", "user@gmail.com")
-        .putValue("approvedMessage", String.format(MESSAGE_TEMPLATE, amount, item, "approved"))
-        .putValue("rejectedMessage", String.format(MESSAGE_TEMPLATE, amount, item, "rejected"))
+        .putValue(CUSTOMER_ID, UUID.randomUUID().toString())
+        .putValue(ITEM, item)
+        .putValue(AMOUNT, amount)
+        .putValue(RECEIVER, "user@gmail.com")
+        .putValue(APPROVED_MESSAGE, String.format(MESSAGE_TEMPLATE, amount, item, "approved"))
+        .putValue(REJECTED_MESSAGE, String.format(MESSAGE_TEMPLATE, amount, item, "rejected"))
         .getVariables();
   }
 }

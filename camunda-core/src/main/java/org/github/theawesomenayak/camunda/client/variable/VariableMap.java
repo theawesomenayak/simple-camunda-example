@@ -10,19 +10,19 @@ public final class VariableMap {
 
   private final Map<String, Variable> variables = new HashMap<>();
 
-  public VariableMap putValue(final String name, final long value) {
+  public VariableMap putValue(final VariableName variableName, final long value) {
 
-    return put(name, new Variable(value, "Long"));
+    return put(variableName.name(), new Variable(value, "Long"));
   }
 
-  public VariableMap putValue(final String name, final double value) {
+  public VariableMap putValue(final VariableName variableName, final double value) {
 
-    return put(name, new Variable(value, "Double"));
+    return put(variableName.name(), new Variable(value, "Double"));
   }
 
-  public VariableMap putValue(final String name, final String value) {
+  public VariableMap putValue(final VariableName variableName, final String value) {
 
-    return put(name, new Variable(value, "String"));
+    return put(variableName.name(), new Variable(value, "String"));
   }
 
   public Map<String, Variable> getVariables() {
