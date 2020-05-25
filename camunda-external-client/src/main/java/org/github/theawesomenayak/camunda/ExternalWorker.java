@@ -11,11 +11,11 @@ public final class ExternalWorker {
 
   private final ExternalTaskHandler externalTaskHandler;
 
-  private final String topic;
+  private final Topic topic;
 
   private final ExecutorService executorService;
 
-  public ExternalWorker(final String topic, final ExternalTaskClient client,
+  public ExternalWorker(final Topic topic, final ExternalTaskClient client,
       final ExternalTaskHandler externalTaskHandler, final int numberOfThreads) {
 
     this.topic = topic;
@@ -26,7 +26,7 @@ public final class ExternalWorker {
 
   public final void execute() {
 
-    executorService.submit(() -> client.subscribe(topic)
+    executorService.submit(() -> client.subscribe(topic.name().toLowerCase())
         .lockDuration(1000)
         .handler(externalTaskHandler)
         .open());

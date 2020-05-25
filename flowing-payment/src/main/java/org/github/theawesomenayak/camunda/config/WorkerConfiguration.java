@@ -1,5 +1,12 @@
 package org.github.theawesomenayak.camunda.config;
 
+import static org.github.theawesomenayak.camunda.config.Topics.APPROVE_PAYMENT;
+import static org.github.theawesomenayak.camunda.config.Topics.CHARGE_CARD;
+import static org.github.theawesomenayak.camunda.config.Topics.CHECK_WALLET;
+import static org.github.theawesomenayak.camunda.config.Topics.DEDUCT_WALLET;
+import static org.github.theawesomenayak.camunda.config.Topics.REFUND_WALLET;
+import static org.github.theawesomenayak.camunda.config.Topics.SEND_NOTIFICATION;
+
 import lombok.AllArgsConstructor;
 import org.camunda.bpm.client.ExternalTaskClient;
 import org.github.theawesomenayak.camunda.ExternalWorker;
@@ -18,47 +25,41 @@ public class WorkerConfiguration {
 
   private static final int NUMBER_OF_THREADS = 1;
 
-  private final ExternalTaskClient externalTaskClient;
+  private final ExternalTaskClient taskClient;
 
   @Bean
-  ExternalWorker approvePaymentWorker(final ApprovePaymentHandler externalTaskHandler) {
+  ExternalWorker approvePaymentWorker(final ApprovePaymentHandler taskHandler) {
 
-    return new ExternalWorker("approve-payment", externalTaskClient, externalTaskHandler,
-        NUMBER_OF_THREADS);
+    return new ExternalWorker(APPROVE_PAYMENT, taskClient, taskHandler, NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker chargeCardWorker(final ChargeCardHandler externalTaskHandler) {
+  ExternalWorker chargeCardWorker(final ChargeCardHandler taskHandler) {
 
-    return new ExternalWorker("charge-card", externalTaskClient, externalTaskHandler,
-        NUMBER_OF_THREADS);
+    return new ExternalWorker(CHARGE_CARD, taskClient, taskHandler, NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker checkWalletWorker(final CheckWalletHandler externalTaskHandler) {
+  ExternalWorker checkWalletWorker(final CheckWalletHandler taskHandler) {
 
-    return new ExternalWorker("check-wallet", externalTaskClient, externalTaskHandler,
-        NUMBER_OF_THREADS);
+    return new ExternalWorker(CHECK_WALLET, taskClient, taskHandler, NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker deductWalletWorker(final DeductWalletHandler externalTaskHandler) {
+  ExternalWorker deductWalletWorker(final DeductWalletHandler taskHandler) {
 
-    return new ExternalWorker("deduct-wallet", externalTaskClient, externalTaskHandler,
-        NUMBER_OF_THREADS);
+    return new ExternalWorker(DEDUCT_WALLET, taskClient, taskHandler, NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker refundWalletWorker(final RefundWalletHandler externalTaskHandler) {
+  ExternalWorker refundWalletWorker(final RefundWalletHandler taskHandler) {
 
-    return new ExternalWorker("refund-wallet", externalTaskClient, externalTaskHandler,
-        NUMBER_OF_THREADS);
+    return new ExternalWorker(REFUND_WALLET, taskClient, taskHandler, NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker sendNotificationWorker(final SendNotificationHandler externalTaskHandler) {
+  ExternalWorker sendNotificationWorker(final SendNotificationHandler taskHandler) {
 
-    return new ExternalWorker("send-notification", externalTaskClient, externalTaskHandler,
-        NUMBER_OF_THREADS);
+    return new ExternalWorker(SEND_NOTIFICATION, taskClient, taskHandler, NUMBER_OF_THREADS);
   }
 }

@@ -1,5 +1,9 @@
 package org.github.theawesomenayak.camunda.config;
 
+import static org.github.theawesomenayak.camunda.config.Topics.BOOK_CAB;
+import static org.github.theawesomenayak.camunda.config.Topics.BOOK_FLIGHT;
+import static org.github.theawesomenayak.camunda.config.Topics.BOOK_HOTEL;
+
 import lombok.AllArgsConstructor;
 import org.camunda.bpm.client.ExternalTaskClient;
 import org.github.theawesomenayak.camunda.ExternalWorker;
@@ -15,26 +19,23 @@ public class WorkerConfiguration {
 
   private static final int NUMBER_OF_THREADS = 1;
 
-  private final ExternalTaskClient externalTaskClient;
+  private final ExternalTaskClient taskClient;
 
   @Bean
-  ExternalWorker bookFlightWorker(final BookFlightHandler externalTaskHandler) {
+  ExternalWorker bookFlightWorker(final BookFlightHandler taskHandler) {
 
-    return new ExternalWorker("book-flight", externalTaskClient, externalTaskHandler,
-        NUMBER_OF_THREADS);
+    return new ExternalWorker(BOOK_FLIGHT, taskClient, taskHandler, NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker bookHotelWorker(final BookHotelHandler externalTaskHandler) {
+  ExternalWorker bookHotelWorker(final BookHotelHandler taskHandler) {
 
-    return new ExternalWorker("book-hotel", externalTaskClient, externalTaskHandler,
-        NUMBER_OF_THREADS);
+    return new ExternalWorker(BOOK_HOTEL, taskClient, taskHandler, NUMBER_OF_THREADS);
   }
 
   @Bean
-  ExternalWorker bookCabWorker(final BookCabHandler externalTaskHandler) {
+  ExternalWorker bookCabWorker(final BookCabHandler taskHandler) {
 
-    return new ExternalWorker("book-cab", externalTaskClient, externalTaskHandler,
-        NUMBER_OF_THREADS);
+    return new ExternalWorker(BOOK_CAB, taskClient, taskHandler, NUMBER_OF_THREADS);
   }
 }
