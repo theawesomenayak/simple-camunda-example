@@ -21,7 +21,8 @@ public abstract class ExternalHandler implements ExternalTaskHandler {
       log.debug(LOG_FORMAT, externalTask.getProcessInstanceId(), externalTask.getId(),
           Status.COMPLETED);
     } catch (final Exception e) {
-      externalTaskService.handleBpmnError(externalTask, e.getMessage());
+      externalTaskService.handleFailure(externalTask, e.getClass().getSimpleName(), e.getMessage(),
+          externalTask.getRetries() - 1, 500);
       log.error(LOG_FORMAT, externalTask.getProcessInstanceId(), externalTask.getId(), Status.ERROR,
           e);
     }

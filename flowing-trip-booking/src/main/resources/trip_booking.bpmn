@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1ljext2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.0.0-alpha.3">
+  <bpmn:process id="Process_1x6fbsq" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start Booking">
+      <bpmn:outgoing>Flow_1klzzpg</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1klzzpg" sourceRef="StartEvent_1" targetRef="Activity_083witk" />
+    <bpmn:sequenceFlow id="Flow_08g30pa" sourceRef="Activity_083witk" targetRef="Activity_17bhe1p" />
+    <bpmn:sequenceFlow id="Flow_0rz8gyt" sourceRef="Activity_17bhe1p" targetRef="Activity_1qjzak7" />
+    <bpmn:endEvent id="Event_1gw5vyw" name="Booking Complete">
+      <bpmn:incoming>Flow_0b25slu</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0b25slu" sourceRef="Activity_1qjzak7" targetRef="Event_1gw5vyw" />
+    <bpmn:serviceTask id="Activity_083witk" name="Book Flight" camunda:type="external" camunda:topic="book-flight">
+      <bpmn:incoming>Flow_1klzzpg</bpmn:incoming>
+      <bpmn:outgoing>Flow_08g30pa</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_17bhe1p" name="Book Hotel" camunda:type="external" camunda:topic="book-hotel">
+      <bpmn:incoming>Flow_08g30pa</bpmn:incoming>
+      <bpmn:outgoing>Flow_0rz8gyt</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1qjzak7" name="Book Cab" camunda:type="external" camunda:topic="book-cab">
+      <bpmn:incoming>Flow_0rz8gyt</bpmn:incoming>
+      <bpmn:outgoing>Flow_0b25slu</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1x6fbsq">
+      <bpmndi:BPMNEdge id="Flow_1klzzpg_di" bpmnElement="Flow_1klzzpg">
+        <di:waypoint x="215" y="97" />
+        <di:waypoint x="270" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08g30pa_di" bpmnElement="Flow_08g30pa">
+        <di:waypoint x="370" y="97" />
+        <di:waypoint x="430" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rz8gyt_di" bpmnElement="Flow_0rz8gyt">
+        <di:waypoint x="530" y="97" />
+        <di:waypoint x="590" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0b25slu_di" bpmnElement="Flow_0b25slu">
+        <di:waypoint x="690" y="97" />
+        <di:waypoint x="752" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="164" y="122" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1gw5vyw_di" bpmnElement="Event_1gw5vyw">
+        <dc:Bounds x="752" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="725" y="122" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1y5fdfx_di" bpmnElement="Activity_083witk">
+        <dc:Bounds x="270" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1jioq57_di" bpmnElement="Activity_17bhe1p">
+        <dc:Bounds x="430" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00k6eo4_di" bpmnElement="Activity_1qjzak7">
+        <dc:Bounds x="590" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

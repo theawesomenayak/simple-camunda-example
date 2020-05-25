@@ -13,7 +13,6 @@
     <module>camunda-external-client</module>
     <module>services-core</module>
     <module>flowing-payment</module>
-    <module>flowing-invoice-approval</module>
     <module>flowing-retail</module>
     <module>flowing-trip-booking</module>
     <module>flowing-inventory</module>

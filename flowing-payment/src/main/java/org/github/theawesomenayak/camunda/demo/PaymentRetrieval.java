@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.github.theawesomenayak.camunda.client.CamundaClient;
 import org.github.theawesomenayak.camunda.client.variable.Variable;
-import org.github.theawesomenayak.camunda.client.variable.Variables;
+import org.github.theawesomenayak.camunda.client.variable.VariableMap;
 import org.github.theawesomenayak.camunda.workflow.Workflow;
 
 @Slf4j
@@ -57,7 +57,7 @@ public final class PaymentRetrieval implements Workflow {
     final long amount = ThreadLocalRandom.current().nextLong(100, 1500);
     final String[] items = {"Phone", "Laptop", "Charger"};
     final String item = items[ThreadLocalRandom.current().nextInt(0, items.length)];
-    return Variables.createVariables()
+    return VariableMap.newInstance()
         .putValue(CUSTOMER_ID, UUID.randomUUID().toString())
         .putValue(ITEM, item)
         .putValue(AMOUNT, amount)

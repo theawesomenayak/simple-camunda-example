@@ -3,12 +3,18 @@ package org.github.theawesomenayak.camunda.client.variable;
 import com.google.common.collect.ImmutableMap;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class VariableMap {
 
   private final Map<String, Variable> variables = new HashMap<>();
+
+  public static VariableMap newInstance() {
+
+    return new VariableMap();
+  }
 
   public VariableMap putValue(final VariableName variableName, final long value) {
 
