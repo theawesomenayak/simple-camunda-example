@@ -1,5 +1,9 @@
 package org.github.theawesomenayak.camunda.engine;
 
+import com.google.common.base.Stopwatch;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import org.camunda.bpm.dmn.engine.DmnDecision;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.DmnEngine;
@@ -24,15 +28,27 @@ public class SampleDmnEvaluator {
 
   public static void main(final String[] args) {
 
+    final String[] items = {"Laptop", "Phone", "Charger"};
     final DmnModelInstance modelInstance = Dmn.createEmptyModel();
-    final Definitions definitions = modelInstance.newInstance(Definitions.class);
-    definitions.setNamespace("http://camunda.org/schema/1.0/dmn");
-    definitions.setName("definitions");
-    modelInstance.setDefinitions(definitions);
+    for (int i = 0; i < 10; i++) {
+      final List<Long> times = new ArrayList<>();
+      final Stopwatch stopwatch = Stopwatch.createStarted();
+      final DecisionTable decisionTable = getDecisionTable(modelInstance);
+      times.add(stopwatch.elapsed().toMillis());
+      addRules(decisionTable, modelInstance);
+      times.add(stopwatch.elapsed().toMillis());
+      final boolean result = evaluate(modelInstance,
+          items[ThreadLocalRandom.current().nextInt(0, 3)]);
+      times.add(stopwatch.stop().elapsed().toMillis());
+      System.out.println("Result=" + result + " Times=" + times);
+    }
+  }
 
-    final Decision decision = modelInstance.newInstance(Decision.class);
-    decision.setId("approve-payment");
-    decision.setName("Approve Payment");
+  private static DecisionTable getDecisionTable(final DmnModelInstance modelInstance) {
+
+    final Definitions definitions = buildDefinitions(modelInstance);
+
+    final Decision decision = buildDecision(modelInstance);
     definitions.addChildElement(decision);
 
     final DecisionTable decisionTable = buildDecisionTable(modelInstance);
@@ -44,15 +60,24 @@ public class SampleDmnEvaluator {
     final Output output = buildOutput(modelInstance);
     decisionTable.addChildElement(output);
 
-    decisionTable.addChildElement(buildRule(modelInstance, "Phone", true));
-    decisionTable.addChildElement(buildRule(modelInstance, "Laptop", false));
-    decisionTable.addChildElement(buildRule(modelInstance, "Charger", true));
+    return decisionTable;
+  }
 
-    Dmn.validateModel(modelInstance);
+  private static Definitions buildDefinitions(final DmnModelInstance modelInstance) {
 
-    final boolean result = evaluate(modelInstance, "Charger");
+    final Definitions definitions = modelInstance.newInstance(Definitions.class);
+    definitions.setNamespace("http://camunda.org/schema/1.0/dmn");
+    definitions.setName("definitions");
+    modelInstance.setDefinitions(definitions);
+    return definitions;
+  }
 
-    System.out.println("Result: " + result);
+  private static Decision buildDecision(final DmnModelInstance modelInstance) {
+
+    final Decision decision = modelInstance.newInstance(Decision.class);
+    decision.setId("approve-payment");
+    decision.setName("Approve Payment");
+    return decision;
   }
 
   private static DecisionTable buildDecisionTable(final DmnModelInstance modelInstance) {
@@ -88,6 +113,14 @@ public class SampleDmnEvaluator {
     return output;
   }
 
+  private static void addRules(final DecisionTable decisionTable,
+      final DmnModelInstance modelInstance) {
+
+    decisionTable.addChildElement(buildRule(modelInstance, "Phone", true));
+    decisionTable.addChildElement(buildRule(modelInstance, "Laptop", false));
+    decisionTable.addChildElement(buildRule(modelInstance, "Charger", true));
+  }
+
   private static Rule buildRule(final DmnModelInstance modelInstance, final String item,
       final boolean approved) {
 
@@ -109,6 +142,7 @@ public class SampleDmnEvaluator {
 
   private static boolean evaluate(final DmnModelInstance modelInstance, final String item) {
 
+    Dmn.validateModel(modelInstance);
     final DmnEngine dmnEngine = DmnEngineConfiguration.createDefaultDmnEngineConfiguration()
         .buildEngine();
     final DmnDecision decision = dmnEngine.parseDecision("approve-payment", modelInstance);
