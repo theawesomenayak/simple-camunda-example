@@ -20,7 +20,7 @@ public final class ChargeCardHandler extends ExternalHandler {
   protected void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
-    final long amount = externalTask.getVariable(AMOUNT.name());
+    final long amount = externalTask.getVariable(AMOUNT.key());
     paymentService.charge(PaymentInstrument.CREDIT_CARD, amount);
     externalTaskService.complete(externalTask);
   }

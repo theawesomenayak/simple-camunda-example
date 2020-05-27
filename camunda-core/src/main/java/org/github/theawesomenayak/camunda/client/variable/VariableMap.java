@@ -18,17 +18,17 @@ public final class VariableMap {
 
   public VariableMap putValue(final VariableName variableName, final long value) {
 
-    return put(variableName.name(), new Variable(value, "Long"));
+    return put(variableName.key(), new Variable(value, "Long"));
   }
 
   public VariableMap putValue(final VariableName variableName, final double value) {
 
-    return put(variableName.name(), new Variable(value, "Double"));
+    return put(variableName.key(), new Variable(value, "Double"));
   }
 
   public VariableMap putValue(final VariableName variableName, final String value) {
 
-    return put(variableName.name(), new Variable(value, "String"));
+    return put(variableName.key(), new Variable(value, "String"));
   }
 
   public Map<String, Variable> getVariables() {

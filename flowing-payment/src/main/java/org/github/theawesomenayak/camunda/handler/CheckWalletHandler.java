@@ -25,11 +25,11 @@ public final class CheckWalletHandler extends ExternalHandler {
   protected void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
-    final long amount = externalTask.getVariable(AMOUNT.name());
-    final String customerId = externalTask.getVariable(CUSTOMER_ID.name());
+    final long amount = externalTask.getVariable(AMOUNT.key());
+    final String customerId = externalTask.getVariable(CUSTOMER_ID.key());
     final long balance = paymentService.checkBalance(customerId, PaymentInstrument.WALLET);
     log.info("CustomerId={} Balance={}", customerId, balance);
     final boolean hasBalance = Double.compare(amount, balance) < 0;
-    externalTaskService.complete(externalTask, ImmutableMap.of(HAS_BALANCE.name(), hasBalance));
+    externalTaskService.complete(externalTask, ImmutableMap.of(HAS_BALANCE.key(), hasBalance));
   }
 }

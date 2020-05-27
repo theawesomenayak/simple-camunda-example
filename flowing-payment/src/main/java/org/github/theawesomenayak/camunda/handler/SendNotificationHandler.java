@@ -26,13 +26,13 @@ public final class SendNotificationHandler extends ExternalHandler {
       final ExternalTaskService externalTaskService) {
 
     final boolean approved = BooleanUtils
-        .toBooleanDefaultIfNull(externalTask.getVariable(APPROVED.name()), true);
+        .toBooleanDefaultIfNull(externalTask.getVariable(APPROVED.key()), true);
     notificationService.sendNotification(NotificationChannel.EMAIL,
         NotificationParams.builder()
-            .receiver(externalTask.getVariable(RECEIVER.name()))
+            .receiver(externalTask.getVariable(RECEIVER.key()))
             .message(approved
-                ? externalTask.getVariable(APPROVED_MESSAGE.name())
-                : externalTask.getVariable(REJECTED_MESSAGE.name()))
+                ? externalTask.getVariable(APPROVED_MESSAGE.key())
+                : externalTask.getVariable(REJECTED_MESSAGE.key()))
             .build());
     externalTaskService.complete(externalTask);
   }

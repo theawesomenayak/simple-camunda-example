@@ -23,7 +23,7 @@ public final class CamundaClient {
         .name(name)
         .files(resources)
         .build();
-    createDeployment.invoke(deploymentRequest);
+    createDeployment.execute(deploymentRequest);
   }
 
   public void startProcess(final String key, final Map<String, Variable> variables) {
@@ -32,6 +32,6 @@ public final class CamundaClient {
         .key(key)
         .variables(variables)
         .build();
-    startProcess.invoke(startProcessRequest);
+    startProcess.execute(startProcessRequest);
   }
 }

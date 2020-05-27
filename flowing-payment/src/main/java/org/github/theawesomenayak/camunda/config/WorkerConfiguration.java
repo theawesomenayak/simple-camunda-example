@@ -1,6 +1,5 @@
 package org.github.theawesomenayak.camunda.config;
 
-import static org.github.theawesomenayak.camunda.config.Topics.APPROVE_PAYMENT;
 import static org.github.theawesomenayak.camunda.config.Topics.CHARGE_CARD;
 import static org.github.theawesomenayak.camunda.config.Topics.CHECK_WALLET;
 import static org.github.theawesomenayak.camunda.config.Topics.DEDUCT_WALLET;
@@ -10,7 +9,6 @@ import static org.github.theawesomenayak.camunda.config.Topics.SEND_NOTIFICATION
 import lombok.AllArgsConstructor;
 import org.camunda.bpm.client.ExternalTaskClient;
 import org.github.theawesomenayak.camunda.ExternalWorker;
-import org.github.theawesomenayak.camunda.handler.ApprovePaymentHandler;
 import org.github.theawesomenayak.camunda.handler.ChargeCardHandler;
 import org.github.theawesomenayak.camunda.handler.CheckWalletHandler;
 import org.github.theawesomenayak.camunda.handler.DeductWalletHandler;
@@ -26,12 +24,6 @@ public class WorkerConfiguration {
   private static final int NUMBER_OF_THREADS = 1;
 
   private final ExternalTaskClient taskClient;
-
-  @Bean
-  ExternalWorker approvePaymentWorker(final ApprovePaymentHandler taskHandler) {
-
-    return new ExternalWorker(APPROVE_PAYMENT, taskClient, taskHandler, NUMBER_OF_THREADS);
-  }
 
   @Bean
   ExternalWorker chargeCardWorker(final ChargeCardHandler taskHandler) {

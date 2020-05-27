@@ -11,5 +11,11 @@ public enum ProcessVariables implements VariableName {
   HAS_BALANCE,
   RECEIVER,
   APPROVED_MESSAGE,
-  REJECTED_MESSAGE
+  REJECTED_MESSAGE;
+
+  @Override
+  public String key() {
+
+    return this.name().toLowerCase();
+  }
 }
