@@ -1,26 +1,21 @@
-package org.github.theawesomenayak.camunda.service.security;
+package org.github.theawesomenayak.camunda.service.security.auto;
 
 import static org.camunda.bpm.engine.authorization.Permissions.ACCESS;
 import static org.camunda.bpm.engine.authorization.Resources.APPLICATION;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.camunda.bpm.engine.AuthorizationService;
 import org.camunda.bpm.engine.ProcessEngine;
-import org.camunda.bpm.webapp.impl.security.SecurityActions;
 import org.camunda.bpm.webapp.impl.security.auth.Authentication;
 import org.camunda.bpm.webapp.impl.security.auth.Authentications;
 import org.camunda.bpm.webapp.impl.security.auth.UserAuthentication;
+import org.github.theawesomenayak.camunda.service.security.core.AuthenticationFilter;
+import org.github.theawesomenayak.camunda.service.security.core.IdentityManager;
 import org.springframework.stereotype.Component;
 
 /**
@@ -28,7 +23,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @AllArgsConstructor
-public final class AutoLoginAuthenticationFilter implements Filter {
+public final class AutoLoginAuthenticationFilter extends AuthenticationFilter {
 
   private static final String[] APPS = new String[]{"welcome", "admin", "cockpit", "tasklist"};
 
@@ -37,43 +32,10 @@ public final class AutoLoginAuthenticationFilter implements Filter {
   private final ProcessEngine processEngine;
 
   @Override
-  public void doFilter(final ServletRequest request, final ServletResponse response,
-      final FilterChain chain) throws IOException, ServletException {
-
-    final HttpServletRequest req = (HttpServletRequest) request;
-
-    // get authentication from session
-    final Authentications authentications = Authentications.getFromSession(req.getSession());
-
-    // This function is added to the normal AuthenticationFilter
-    setAutoLoginAuthentication(req, authentications);
-
-    // set current authentication to the one restored from session (maybe auto login was added)
-    Authentications.setCurrent(authentications);
-
-    try {
-
-      SecurityActions.runWithAuthentications(() -> {
-
-        try {
-          chain.doFilter(request, response);
-        } catch (final Exception e) {
-          throw new AuthenticationException(e);
-        }
-        return null;
-      }, authentications);
-    } finally {
-      Authentications.clearCurrent();
-      // store updated authentication object in session for next request
-      Authentications.updateSession(req.getSession(), authentications);
-    }
-  }
-
-  private void setAutoLoginAuthentication(final HttpServletRequest req,
-      final Authentications authentications) {
+  protected void setup(final HttpServletRequest request, final Authentications authentications) {
 
     // Get the username from the user in SSO
-    final String username = identityManager.retrieveUsername(req);
+    final String username = identityManager.getUserName(request);
 
     // if not set - no auto login
     if (username == null) {

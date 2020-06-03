@@ -1,4 +1,4 @@
-package org.github.theawesomenayak.camunda.service.security;
+package org.github.theawesomenayak.camunda.service.security.core;
 
 public final class AuthenticationException extends RuntimeException {
 
