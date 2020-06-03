@@ -95,7 +95,6 @@ public final class AutoLoginAuthenticationFilter implements Filter {
 
     // check user's app authorizations by iterating of list of apps and ask if permitted
     final HashSet<String> authorizedApps = new HashSet<>();
-    authorizedApps.add("admin");
     if (processEngine.getProcessEngineConfiguration().isAuthorizationEnabled()) {
       for (final String application : APPS) {
         if (authorizationService
