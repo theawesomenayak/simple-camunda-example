@@ -1,11 +1,8 @@
 camunda.bpm:
+  authorization:
+    enabled: true
   admin-user:
-    id: demo
-    password: demo
-    firstName: Siben
-    lastName: Nayak
-  filter:
-    create: All tasks
+    id: admin
 
 spring:
   jersey:
