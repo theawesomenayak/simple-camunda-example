@@ -13,16 +13,18 @@ import org.camunda.bpm.client.task.ExternalTaskService;
 import org.github.theawesomenayak.camunda.ExternalHandler;
 import org.github.theawesomenayak.model.NotificationChannel;
 import org.github.theawesomenayak.model.NotificationParams;
+import org.github.theawesomenayak.observability.Observe;
 import org.github.theawesomenayak.service.NotificationService;
 
 @AllArgsConstructor
 @Named
-public final class SendNotificationHandler extends ExternalHandler {
+public class SendNotificationHandler extends ExternalHandler {
 
   private final NotificationService notificationService;
 
+  @Observe
   @Override
-  protected void handle(final ExternalTask externalTask,
+  public void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
     final boolean approved = BooleanUtils

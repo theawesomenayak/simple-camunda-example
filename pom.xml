@@ -19,6 +19,7 @@
     <module>flowing-shipping</module>
     <module>camunda-service</module>
     <module>worker-service</module>
+    <module>observability</module>
   </modules>
 
   <parent>
@@ -82,11 +83,6 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.10</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.30</version>
     </dependency>
   </dependencies>
 

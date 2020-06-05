@@ -5,12 +5,14 @@ import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 import org.github.theawesomenayak.ServiceUtils;
 import org.github.theawesomenayak.model.PaymentInstrument;
+import org.github.theawesomenayak.observability.Observe;
 import org.github.theawesomenayak.service.PaymentService;
 
 @Slf4j
 @Named
-public final class PaymentServiceImpl implements PaymentService {
+public class PaymentServiceImpl implements PaymentService {
 
+  @Observe
   @Override
   public long checkBalance(final String customerId, final PaymentInstrument paymentInstrument) {
 
@@ -19,6 +21,7 @@ public final class PaymentServiceImpl implements PaymentService {
     return ThreadLocalRandom.current().nextLong(800, 1500);
   }
 
+  @Observe
   @Override
   public void charge(final PaymentInstrument paymentInstrument, final long amount) {
 
@@ -26,6 +29,7 @@ public final class PaymentServiceImpl implements PaymentService {
     ServiceUtils.delay();
   }
 
+  @Observe
   @Override
   public void refund(final PaymentInstrument paymentInstrument, final long amount) {
 

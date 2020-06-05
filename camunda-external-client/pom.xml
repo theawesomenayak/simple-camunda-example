@@ -17,6 +17,11 @@
       <groupId>org.camunda.bpm</groupId>
       <version>1.3.0</version>
     </dependency>
+    <dependency>
+      <artifactId>observability</artifactId>
+      <groupId>org.github.theawesomenayak</groupId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
 </project>

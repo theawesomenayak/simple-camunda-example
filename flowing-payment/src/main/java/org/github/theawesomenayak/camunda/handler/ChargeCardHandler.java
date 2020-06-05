@@ -8,16 +8,18 @@ import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
 import org.github.theawesomenayak.camunda.ExternalHandler;
 import org.github.theawesomenayak.model.PaymentInstrument;
+import org.github.theawesomenayak.observability.Observe;
 import org.github.theawesomenayak.service.PaymentService;
 
 @AllArgsConstructor
 @Named
-public final class ChargeCardHandler extends ExternalHandler {
+public class ChargeCardHandler extends ExternalHandler {
 
   private final PaymentService paymentService;
 
+  @Observe
   @Override
-  protected void handle(final ExternalTask externalTask,
+  public void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
     final long amount = externalTask.getVariable(AMOUNT.key());

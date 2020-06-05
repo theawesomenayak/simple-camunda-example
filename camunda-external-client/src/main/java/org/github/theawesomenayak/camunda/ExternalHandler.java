@@ -11,7 +11,7 @@ public abstract class ExternalHandler implements ExternalTaskHandler {
   private static final String LOG_FORMAT = "ProcessInstanceId={} TaskId={} Status={}";
 
   @Override
-  public final void execute(final ExternalTask externalTask,
+  public void execute(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
     log.debug(LOG_FORMAT, externalTask.getProcessInstanceId(), externalTask.getId(),
@@ -28,6 +28,6 @@ public abstract class ExternalHandler implements ExternalTaskHandler {
     }
   }
 
-  protected abstract void handle(final ExternalTask externalTask,
+  public abstract void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService);
 }

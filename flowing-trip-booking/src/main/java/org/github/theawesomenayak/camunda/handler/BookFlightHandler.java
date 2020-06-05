@@ -8,10 +8,10 @@ import org.github.theawesomenayak.camunda.ExternalHandler;
 
 @Named
 @AllArgsConstructor
-public final class BookFlightHandler extends ExternalHandler {
+public class BookFlightHandler extends ExternalHandler {
 
   @Override
-  protected void handle(final ExternalTask externalTask,
+  public void handle(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
   }
