@@ -4,7 +4,7 @@ import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 import org.github.theawesomenayak.model.NotificationChannel;
 import org.github.theawesomenayak.model.NotificationParams;
-import org.github.theawesomenayak.observability.Observe;
+import org.github.theawesomenayak.observability.annotation.Observe;
 import org.github.theawesomenayak.service.NotificationService;
 
 @Slf4j

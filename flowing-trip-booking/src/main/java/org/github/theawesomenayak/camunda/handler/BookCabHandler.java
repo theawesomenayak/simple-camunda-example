@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
 import org.github.theawesomenayak.camunda.ExternalHandler;
-import org.github.theawesomenayak.observability.Observe;
+import org.github.theawesomenayak.observability.annotation.Observe;
 
 @Named
 @AllArgsConstructor

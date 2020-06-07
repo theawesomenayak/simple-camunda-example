@@ -12,7 +12,7 @@ import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
 import org.github.theawesomenayak.camunda.ExternalHandler;
 import org.github.theawesomenayak.model.PaymentInstrument;
-import org.github.theawesomenayak.observability.Observe;
+import org.github.theawesomenayak.observability.annotation.Observe;
 import org.github.theawesomenayak.service.PaymentService;
 
 @Slf4j

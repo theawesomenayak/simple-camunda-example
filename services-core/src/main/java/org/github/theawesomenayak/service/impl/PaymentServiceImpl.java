@@ -5,7 +5,7 @@ import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 import org.github.theawesomenayak.ServiceUtils;
 import org.github.theawesomenayak.model.PaymentInstrument;
-import org.github.theawesomenayak.observability.Observe;
+import org.github.theawesomenayak.observability.annotation.Observe;
 import org.github.theawesomenayak.service.PaymentService;
 
 @Slf4j

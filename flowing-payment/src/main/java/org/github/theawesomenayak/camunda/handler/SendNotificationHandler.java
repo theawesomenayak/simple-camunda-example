@@ -13,7 +13,7 @@ import org.camunda.bpm.client.task.ExternalTaskService;
 import org.github.theawesomenayak.camunda.ExternalHandler;
 import org.github.theawesomenayak.model.NotificationChannel;
 import org.github.theawesomenayak.model.NotificationParams;
-import org.github.theawesomenayak.observability.Observe;
+import org.github.theawesomenayak.observability.annotation.Observe;
 import org.github.theawesomenayak.service.NotificationService;
 
 @Named

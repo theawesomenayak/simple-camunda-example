@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.github.theawesomenayak.observability.annotation.Observe;
 import org.github.theawesomenayak.observability.common.AspectUtil;
 import org.github.theawesomenayak.observability.common.Observed;
 import org.github.theawesomenayak.observability.common.Result;
@@ -27,9 +28,9 @@ public class ObserveAspect {
 
     final String identifier = StringUtils.defaultIfBlank(observe.identifier(),
         AspectUtil.getIdentifier(pjp));
-    final Observed.ObservedBuilder builder = Observed.builder()
-        .identifier(identifier);
-    final ObservedContext observedContext = new ObservedContext(meterRegistry, tracer, identifier);
+    final Observed.ObservedBuilder builder = Observed.builder().identifier(identifier);
+    final ObservedContext observedContext = new ObservedContext(meterRegistry, tracer,
+        builder.build());
     try {
       final Object value = pjp.proceed();
       observedContext.recordSuccess(builder.result(Result.SUCCESSFUL).build());

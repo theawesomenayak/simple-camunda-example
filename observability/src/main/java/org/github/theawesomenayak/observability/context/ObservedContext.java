@@ -17,11 +17,11 @@ public final class ObservedContext {
   final Stopwatch stopwatch;
 
   public ObservedContext(final MeterRegistry meterRegistry, final Tracer tracer,
-      final String name) {
+      final Observed observed) {
 
     this.logContext = new LogContext();
-    this.metricContext = new MetricContext(meterRegistry, name);
-    this.traceContext = new TraceContext(tracer, name);
+    this.metricContext = new MetricContext(meterRegistry, observed);
+    this.traceContext = new TraceContext(tracer, observed);
     this.stopwatch = Stopwatch.createStarted();
   }
 

@@ -6,6 +6,7 @@ import io.micrometer.core.instrument.Timer;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.concurrent.atomic.AtomicLong;
+import org.github.theawesomenayak.observability.common.Observed;
 
 public final class MetricContext {
 
@@ -17,8 +18,9 @@ public final class MetricContext {
 
   private final AtomicLong gauge;
 
-  public MetricContext(final MeterRegistry meterRegistry, final String name) {
+  public MetricContext(final MeterRegistry meterRegistry, final Observed observed) {
 
+    final String name = observed.getIdentifier();
     this.totalCounter = meterRegistry.counter(name + ".total");
     this.errorCounter = meterRegistry.counter(name + ".error");
     this.timer = meterRegistry.timer(name + ".time");
