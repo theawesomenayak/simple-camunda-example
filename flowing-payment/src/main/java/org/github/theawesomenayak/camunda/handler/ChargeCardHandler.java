@@ -11,19 +11,23 @@ import org.github.theawesomenayak.model.PaymentInstrument;
 import org.github.theawesomenayak.observability.Observe;
 import org.github.theawesomenayak.service.PaymentService;
 
-@AllArgsConstructor
 @Named
+@AllArgsConstructor
 public class ChargeCardHandler extends ExternalHandler {
 
   private final PaymentService paymentService;
 
   @Observe
   @Override
-  public void handle(final ExternalTask externalTask,
+  public void execute(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
-    final long amount = externalTask.getVariable(AMOUNT.key());
-    paymentService.charge(PaymentInstrument.CREDIT_CARD, amount);
-    externalTaskService.complete(externalTask);
+    try {
+      final long amount = externalTask.getVariable(AMOUNT.key());
+      paymentService.charge(PaymentInstrument.CREDIT_CARD, amount);
+      externalTaskService.complete(externalTask);
+    } catch (final Exception e) {
+      handleFailure(externalTask, externalTaskService, e);
+    }
   }
 }

@@ -16,26 +16,30 @@ import org.github.theawesomenayak.model.NotificationParams;
 import org.github.theawesomenayak.observability.Observe;
 import org.github.theawesomenayak.service.NotificationService;
 
-@AllArgsConstructor
 @Named
+@AllArgsConstructor
 public class SendNotificationHandler extends ExternalHandler {
 
   private final NotificationService notificationService;
 
   @Observe
   @Override
-  public void handle(final ExternalTask externalTask,
+  public void execute(final ExternalTask externalTask,
       final ExternalTaskService externalTaskService) {
 
-    final boolean approved = BooleanUtils
-        .toBooleanDefaultIfNull(externalTask.getVariable(APPROVED.key()), true);
-    notificationService.sendNotification(NotificationChannel.EMAIL,
-        NotificationParams.builder()
-            .receiver(externalTask.getVariable(RECEIVER.key()))
-            .message(approved
-                ? externalTask.getVariable(APPROVED_MESSAGE.key())
-                : externalTask.getVariable(REJECTED_MESSAGE.key()))
-            .build());
-    externalTaskService.complete(externalTask);
+    try {
+      final boolean approved = BooleanUtils
+          .toBooleanDefaultIfNull(externalTask.getVariable(APPROVED.key()), true);
+      notificationService.sendNotification(NotificationChannel.EMAIL,
+          NotificationParams.builder()
+              .receiver(externalTask.getVariable(RECEIVER.key()))
+              .message(approved
+                  ? externalTask.getVariable(APPROVED_MESSAGE.key())
+                  : externalTask.getVariable(REJECTED_MESSAGE.key()))
+              .build());
+      externalTaskService.complete(externalTask);
+    } catch (final Exception e) {
+      handleFailure(externalTask, externalTaskService, e);
+    }
   }
 }
