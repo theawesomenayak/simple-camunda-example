@@ -1,24 +1,23 @@
 package org.github.theawesomenayak.observability.context;
 
+import io.opentracing.Scope;
 import io.opentracing.Span;
 import io.opentracing.Tracer;
-import io.opentracing.Tracer.SpanBuilder;
 
 public final class TraceContext {
 
   private final Span span;
+  private final Scope scope;
 
   public TraceContext(final Tracer tracer, final String name) {
 
-    final SpanBuilder builder = tracer.buildSpan(name);
-    if (null != tracer.activeSpan()) {
-      builder.asChildOf(tracer.activeSpan());
-    }
-    this.span = builder.start();
+    this.span = tracer.buildSpan(name).start();
+    this.scope = tracer.activateSpan(this.span);
   }
 
   public void capture() {
 
+    this.scope.close();
     this.span.finish();
   }
 }

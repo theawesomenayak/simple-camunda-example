@@ -1,9 +1,7 @@
 package org.github.theawesomenayak.observability;
 
-import com.google.common.base.Stopwatch;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.opentracing.Tracer;
-import java.util.concurrent.TimeUnit;
 import javax.inject.Named;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -32,11 +30,9 @@ public class ObserveAspect {
     final Observed.ObservedBuilder builder = Observed.builder()
         .identifier(identifier);
     final ObservedContext observedContext = new ObservedContext(meterRegistry, tracer, identifier);
-    final Stopwatch stopwatch = Stopwatch.createStarted();
     try {
       final Object value = pjp.proceed();
-      observedContext.recordSuccess(builder.result(Result.SUCCESSFUL).build(),
-          stopwatch.elapsed(TimeUnit.MILLISECONDS));
+      observedContext.recordSuccess(builder.result(Result.SUCCESSFUL).build());
       return value;
     } catch (final Exception ex) {
       observedContext.recordFailure(builder.result(Result.FAILED).exception(ex).build());
