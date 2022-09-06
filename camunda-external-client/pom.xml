@@ -15,7 +15,7 @@
     <dependency>
       <artifactId>camunda-external-task-client</artifactId>
       <groupId>org.camunda.bpm</groupId>
-      <version>1.3.0</version>
+      <version>7.17.0</version>
     </dependency>
     <dependency>
       <artifactId>observability</artifactId>

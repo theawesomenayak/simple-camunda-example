@@ -19,7 +19,7 @@ import org.github.theawesomenayak.camunda.service.security.core.IdentityManager;
 import org.springframework.stereotype.Component;
 
 /**
- * GoTo - http://localhost:8080/?auto-login-username=admin
+ * GoTo - <a href="http://localhost:8080/?auto-login-username=admin">...</a>
  */
 @Component
 @AllArgsConstructor

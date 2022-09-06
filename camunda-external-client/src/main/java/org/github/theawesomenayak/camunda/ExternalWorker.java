@@ -24,7 +24,7 @@ public final class ExternalWorker {
     this.executorService = Executors.newFixedThreadPool(numberOfThreads);
   }
 
-  public final void execute() {
+  public void execute() {
 
     executorService.submit(() -> client.subscribe(topic.name().toLowerCase())
         .lockDuration(1000)
