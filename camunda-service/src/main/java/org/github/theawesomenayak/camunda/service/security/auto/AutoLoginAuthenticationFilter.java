@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import javax.servlet.http.HttpServletRequest;
+
 import lombok.AllArgsConstructor;
 import org.camunda.bpm.engine.AuthorizationService;
 import org.camunda.bpm.engine.ProcessEngine;
@@ -17,6 +17,8 @@ import org.camunda.bpm.webapp.impl.security.auth.UserAuthentication;
 import org.github.theawesomenayak.camunda.service.security.core.AuthenticationFilter;
 import org.github.theawesomenayak.camunda.service.security.core.IdentityManager;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * GoTo - <a href="http://localhost:8080/?auto-login-username=admin">...</a>

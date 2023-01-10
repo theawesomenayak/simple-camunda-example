@@ -2,10 +2,12 @@ package org.github.theawesomenayak.camunda.service.security.core;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
+
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.Tenant;
+
+import javax.servlet.http.HttpServletRequest;
 
 public abstract class IdentityManager {
 
